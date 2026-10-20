@@ -1,13 +1,16 @@
-# Paper 2 extension: architecture factorial and context sweep (preliminary)
+# Paper 2 extension: architecture factorial and context sweep
 
-`factorial_sweep_five_seed.csv` is built by `factorial_sweep.py` from:
-- local runs: `global_by_seed.csv` (notebooks 06–11, 19–23);
-- Colab runs (24–36): the five-seed summary printed in the executed notebooks (per-seed files are still on Google Drive).
+`matched_factorial_sweep.py` (run as `python matched_factorial_sweep.py <root> <this folder>`) compares models on
+identical endpoints (same seed, engine, endpoint cycle), from each run's `test_predictions_rowlevel.csv`:
 
-**Preliminary**: these are full-test-set means. 30/45/60/90-cycle models score different endpoint sets (a W-cycle window
-needs W cycles of history), so window-length differences are not yet matched comparisons. Colab rows with a collapsed seed
-(ratio ≈ 1.00: the model predicts the constant quantiles) include that seed; collapsed seeds:
-22 DS-A 60 lstm_attn s1000, 26 DS-A 60 bilstm_noattn s1000, 28 DS-A 30 lstm_noattn s123, 29 IID 60 lstm_noattn s123.
+- factorial: BiLSTM/LSTM x with/without attention x 30/60 cycles x IID/DS-A, on the endpoints a 60-cycle window can
+  score (IID 4,703, DS-A 1,753 per seed) -> `factorial_matched_*.csv` (draft v2 Tables 11-12);
+- sweep: Part I model at 30/45/60/90 cycles x IID/DS-A/DS-B, on the endpoints a 90-cycle window can score
+  (IID 3,983, DS-A 1,471, DS-B 1,170) -> `sweep_matched_*.csv` (Table 13).
 
-To finish: copy the `FD004_*_Results` folders for 24–36 from Drive, then rerun matched endpoints, bootstrap and the
-collapsed-excluded summaries.
+Summaries are given for all seeds and with collapsed seeds excluded (loss ratio > 0.95: the model predicts the
+constant quantiles): notebooks 22 and 26 seed 1000, 28 and 29 seed 123. Paired differences drop any pair with a
+collapsed side.
+
+`factorial_sweep_five_seed.csv` (from `factorial_sweep.py`) is the earlier unmatched full-test-set summary, kept
+for the record.

@@ -106,9 +106,11 @@ of 42. Results: `FD004_Paper2_EqualWidth/`, Figure 3.
 mid-life RMSE lower in 5/5 seeds under all three protocols. DS-A seed 789 at 60 cycles collapsed (ratio 1.00).
 Results: `FD004_FD002_Matched_30v60/`.
 
-**Architecture factorial and 45/90 sweep** (preliminary: full-test-set five-seed summaries, unmatched, collapsed
-seeds included). Without attention, RMSE is lower (IID 30: 20.3/20.4 vs 22.1/22.7) and its seed SD drops from
-1.1–4.5 to 0.4–0.6 cycles; Balanced intervals are 13–17 cycles narrower under IID; engines below 80% are similar
-(IID 2.4–4.6, DS-A 7.8–12.4 across all cells). Sweep (Part I model): IID RMSE 22.7, 22.2, 21.2, 20.9 at 30/45/60/90;
-engines below 80% show no clear trend. Collapsed runs: notebooks 22, 26 (seed 1000), 28, 29 (seed 123).
-Table: `FD004_Paper2_Factorial_Sweep/`.
+**Architecture factorial** (matched on 60-cycle endpoints; collapsed seeds excluded). Without attention RMSE is
+2–8 cycles lower and its seed SD 0.2–0.7 (vs 1.1–6.2). 60 − 30 RMSE without attention: IID −2.71 (5/5), −2.89 (4/4);
+DS-A −4.40 (4/4), −4.05 (4/4). With attention: 2–3 of 4–5 seeds. Engines below 80% barely improve; LSTM without
+attention at DS-A 60 has the lowest RMSE (17.9) but +3.0 engines below 80% vs 30 cycles.
+
+**Sweep** (Part I model, matched on 90-cycle endpoints): RMSE IID 24.6, 23.1, 21.9, 20.9; DS-A 27.1, 24.3, 25.9, 23.1;
+DS-B 27.3, 26.4, 22.7, 22.7 at 30/45/60/90. DS-A engines below 80%: 12.2, 10.2, 9.6, 7.0 (90 − 30: −5.2 ± 2.2, 5/5).
+Collapsed runs: notebooks 22, 26 (seed 1000), 28, 29 (seed 123). Tables: `FD004_Paper2_Factorial_Sweep/`.

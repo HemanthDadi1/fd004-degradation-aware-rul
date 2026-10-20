@@ -24,10 +24,11 @@ Extensions (draft v2, Section 6):
 - **Equal width**: at the same mean interval width, the 60-cycle ensemble has fewer or equally many engines below 80%
   in all nine condition-width cells.
 - **FD002**: 60 cycles lowers IID and DS-B error in every seed.
-- **Architecture factorial** (BiLSTM/LSTM × with/without attention) and **45/90-cycle sweep**: preliminary.
-  Attention, not bidirectionality, adds error and seed variance, and the count of under-covered engines barely
-  moves. These tables come from the run summaries; the Colab result folders (models, row-level predictions) for
-  notebooks 24–36 are not in this repository yet.
+- **Architecture factorial** (BiLSTM/LSTM × with/without attention, matched endpoints): without attention the model
+  is 2–8 cycles more accurate, far more stable across seeds, and gains from 60 cycles in every converged seed pair;
+  the count of under-covered engines barely moves.
+- **45/90-cycle sweep** (matched endpoints): error falls with window length; under DS-A the 90-cycle model has fewer
+  engines below 80% than the 30-cycle model in all five seeds.
 
 Details: `docs/Paper2_Results_Summary.md`. Why the original Paper 2 numbers were replaced:
 `docs/Paper2_Audit_of_original_results.md`.
@@ -46,11 +47,11 @@ Details: `docs/Paper2_Results_Summary.md`. Why the original Paper 2 numbers were
 | `FD004_P2E1_vs_P2E8_Results/` | Same for notebook 12 |
 | `FD004_Paper2_Matched_30v60/` | Matched 30 vs 60 comparison: per-seed metrics, paired differences, bootstrap, life stage, persistent engines |
 | `scripts/matched_compare.py`, `scripts/p2figs.py` | Matched comparison and the paper's Figures 1–2 |
-| `FD004_FD002_*_W60_Results/`, `FD004_*_lstm_attn_Results/`, `FD004_IID_W30_bilstm_noattn_Results/` | Full outputs of notebooks 16–23 |
+| `FD004_FD002_*_W60_Results/`, `FD004_*_{lstm_attn,bilstm_noattn,lstm_noattn}_Results/`, `FD004_*_W45_Results/`, `FD004_*_W90_Results/` | Full outputs of notebooks 16–36 |
 | `FD004_FD002_Matched_30v60/` | FD002 matched 30 vs 60 comparison (30-cycle side from the Part I repository) |
 | `FD004_Paper2_Ensembles/`, `FD004_Paper2_EqualWidth/` | Five-seed ensembles and equal-width curves; `figures/p2_fig3_equal_width.png` |
-| `FD004_Paper2_Factorial_Sweep/` | Five-seed factorial and sweep table (preliminary; see README there) |
-| `scripts/ensembles.py`, `equal_width_30v60.py`, `matched_compare_fd002.py`, `p2fig3.py`, `factorial_sweep.py` | Analyses behind the extension tables and Figure 3 |
+| `FD004_Paper2_Factorial_Sweep/` | Matched factorial and sweep tables, all seeds and collapsed seeds excluded (see README there) |
+| `scripts/ensembles.py`, `equal_width_30v60.py`, `matched_compare_fd002.py`, `p2fig3.py`, `matched_factorial_sweep.py` | Analyses behind the extension tables and Figure 3 |
 | `scripts/make_gen_nb.py` | Generates notebooks 16–36 (condition, window, dataset, architecture) |
 | `colab/RUN_ON_COLAB.ipynb` | Runs notebooks on a Colab GPU, resumably (notebooks 24–36 ran this way) |
 | `artifacts/`, `FD004_DS_B_Results/`, `FD004_DS_A_Rerun_Results/`, `models/` | Inputs the notebooks check against |
@@ -79,6 +80,7 @@ python scripts/matched_compare.py . FD004_Paper2_Matched_30v60
 python scripts/ensembles.py . FD004_Paper2_Ensembles
 python scripts/equal_width_30v60.py . FD004_Paper2_EqualWidth
 python scripts/matched_compare_fd002.py . FD004_FD002_Matched_30v60
+python scripts/matched_factorial_sweep.py . FD004_Paper2_Factorial_Sweep
 ```
 
 ## Early stopping note

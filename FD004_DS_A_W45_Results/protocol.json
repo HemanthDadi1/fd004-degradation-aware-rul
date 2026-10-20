@@ -1,0 +1,67 @@
+{
+  "experiment": "FD004 replication of Paper 1, DS-A, 45-cycle context, converged five-seed run",
+  "dataset": "FD004",
+  "architecture": "bilstm_attn",
+  "window_size": 45,
+  "created_utc": "2026-10-20T17:45:09Z",
+  "data_seed": 42,
+  "model_seeds": [
+    42,
+    123,
+    456,
+    789,
+    1000
+  ],
+  "internal_validation": {
+    "fraction_of_train_engines": 0.2,
+    "split_seed": 42
+  },
+  "model": {
+    "projection": 18,
+    "bilstm_units": 64,
+    "quantiles": [
+      0.1,
+      0.5,
+      0.9
+    ],
+    "learning_rate": 0.001,
+    "batch_size": 256
+  },
+  "training_rule": {
+    "max_epochs": 150,
+    "monitor": "val_loss",
+    "patience": 15,
+    "start_from_epoch": 30,
+    "restore_best_weights": true
+  },
+  "convergence_check": {
+    "ratio": 0.6,
+    "reference": "constant training quantiles evaluated on internal validation",
+    "failed_seeds": "reported and flagged; never replaced or dropped"
+  },
+  "calibration": {
+    "alpha": 0.2,
+    "methods": [
+      "Raw Quantiles",
+      "Window CQR",
+      "Asymmetric CQR",
+      "Regime-conditional Asymmetric CQR",
+      "Balanced Engine CQR"
+    ],
+    "window": "finite-sample higher quantile at ceil((n+1)(1-alpha))/n",
+    "asymmetric": "per tail at ceil((n+1)(1-alpha/2))/n, unclipped scores",
+    "regime_conditional": "asymmetric rule within each endpoint regime",
+    "balanced": "within-engine np.quantile(.,0.80), then ceil((M+1)(1-alpha))/M higher",
+    "interval_clip_at_zero": true
+  },
+  "life_stage": {
+    "Early": "RUL > 80",
+    "Mid": "40 < RUL <= 80",
+    "Late": "RUL <= 40"
+  },
+  "bootstrap": {
+    "replicates": 10000,
+    "unit": "evaluation engine",
+    "rng_seed": 42
+  }
+}
