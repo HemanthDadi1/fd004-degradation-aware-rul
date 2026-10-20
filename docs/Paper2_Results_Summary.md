@@ -6,7 +6,7 @@ Paper 1 identified, and does that improve engine-level conformal reliability und
 ## Design
 
 - Only the window length changes. Everything else is the Paper 1 pipeline: splits, preprocessing,
-  BiLSTM-attention quantile model, pre-registered training rule (20% internal validation, early
+  BiLSTM-attention quantile model, pre-specified training rule (20% internal validation, early
   stopping, convergence check), calibration methods, metrics, seeds 42, 123, 456, 789, 1000.
 - Notebooks 09 (IID), 10 (DS-A), 11 (DS-B) in `Notebooks/Paper 2`; results in `FD004_*_W60_Results/`.
 - Convergence: 14 of 15 runs converged; IID seed 123 narrowly failed (0.61 vs 0.60, judged on the restored epoch) and is
@@ -90,3 +90,25 @@ seed-dependent, so the benefit of context length depends on the architecture.
 
 Note on early stopping: Keras `start_from_epoch=30` restores the best weights from epoch 31 on; convergence is
 judged on that restored epoch (`convergence_check_restored_epoch.csv`).
+
+## Extensions (draft v2, Section 6)
+
+**Seed ensembles** (average the five seeds' q10/q50/q90, then calibrate; matched endpoints). 60 − 30 with
+engine-cluster bootstrap 95% CI: RMSE IID −3.71 (−5.25, −2.28), DS-A −2.61 (−3.64, −1.50), DS-B −5.29 (−6.87, −3.67);
+mid-life RMSE −5.26, −4.97, −9.70 (all CIs exclude zero). Balanced engines below 80%: 3 → 4, 8 → 9, 11 → 8.
+Results: `FD004_Paper2_Ensembles/`.
+
+**Equal width** (Window CQR swept 80–98%, engines below 80% read at mean width 60/70/80). Ensembles: 60 cycles
+fewer or equal in 9/9 cells (DS-B 16.0 → 9.5, 11.0 → 6.0, 7.4 → 4.0); single seeds: better 27, worse 14, tied 1
+of 42. Results: `FD004_Paper2_EqualWidth/`, Figure 3.
+
+**FD002** (paired 60 − 30, five seeds, matched): RMSE IID −5.52 ± 1.66 (5/5), DS-B −6.39 ± 4.86 (5/5);
+mid-life RMSE lower in 5/5 seeds under all three protocols. DS-A seed 789 at 60 cycles collapsed (ratio 1.00).
+Results: `FD004_FD002_Matched_30v60/`.
+
+**Architecture factorial and 45/90 sweep** (preliminary: full-test-set five-seed summaries, unmatched, collapsed
+seeds included). Without attention, RMSE is lower (IID 30: 20.3/20.4 vs 22.1/22.7) and its seed SD drops from
+1.1–4.5 to 0.4–0.6 cycles; Balanced intervals are 13–17 cycles narrower under IID; engines below 80% are similar
+(IID 2.4–4.6, DS-A 7.8–12.4 across all cells). Sweep (Part I model): IID RMSE 22.7, 22.2, 21.2, 20.9 at 30/45/60/90;
+engines below 80% show no clear trend. Collapsed runs: notebooks 22, 26 (seed 1000), 28, 29 (seed 123).
+Table: `FD004_Paper2_Factorial_Sweep/`.

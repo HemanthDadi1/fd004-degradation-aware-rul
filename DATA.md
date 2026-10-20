@@ -5,8 +5,9 @@ NASA Prognostics Center of Excellence data repository ("Turbofan Engine Degradat
 Saxena et al., 2008) and place the files so that this path exists:
 
     CMAPSSData/train_FD004.txt
+    CMAPSSData/train_FD002.txt   (FD002, notebooks 16–18)
 
-Only `train_FD004.txt` is used. Set the environment variable `FD004_ROOT` to the repository root.
+Only these two training files are used. Set the environment variable `FD004_ROOT` to the repository root.
 
 Included inputs:
 

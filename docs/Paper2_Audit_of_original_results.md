@@ -43,7 +43,7 @@ Every Paper 1 number Paper 2 cites has changed, and several of its conclusions d
 
 **Principle:** Paper 2 changes one thing relative to Paper 1, the input context (30 → 60 cycles),
 and keeps everything else identical: splits, preprocessing, the BiLSTM-attention quantile model,
-the pre-registered training rule, the five seeds, every calibration method and every engine-level
+the pre-specified training rule, the five seeds, every calibration method and every engine-level
 metric. Then any difference is attributable to the context length.
 
 1. **Main experiment (new notebooks 09–11):** the Paper 1 rerun notebooks with `WINDOW = 60`, for
@@ -57,7 +57,7 @@ metric. Then any difference is attributable to the context length.
    paired bootstrap differences (60 − 30) on matched endpoints.
 4. **Development evidence (P2-E1 to P2-E8):** keep as the mechanism study that motivated 60 cycles,
    reported like Paper 1's Table 1 (development, selection-biased, disclosed). Optional: rerun only
-   P2-E1 vs P2-E8 under the pre-registered rule on the IID split for a clean confirmation.
+   P2-E1 vs P2-E8 under the pre-specified rule on the IID split for a clean confirmation.
 5. **Then rewrite the Paper 2 manuscript** around the matched results.
 
 ## Decisions for you

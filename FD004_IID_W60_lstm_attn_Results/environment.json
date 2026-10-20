@@ -1,0 +1,8 @@
+{
+  "python": "3.12.13",
+  "platform": "macOS-26.5.2-arm64-arm-64bit",
+  "tensorflow": "2.20.0",
+  "numpy": "2.0.2",
+  "pandas": "2.2.3",
+  "gpu": []
+}
