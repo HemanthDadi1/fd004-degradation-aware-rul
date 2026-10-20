@@ -109,7 +109,8 @@ Results: `FD004_FD002_Matched_30v60/`.
 **Architecture factorial** (matched on 60-cycle endpoints; collapsed seeds excluded). Without attention RMSE is
 2–8 cycles lower and its seed SD 0.2–0.7 (vs 1.1–6.2). 60 − 30 RMSE without attention: IID −2.71 (5/5), −2.89 (4/4);
 DS-A −4.40 (4/4), −4.05 (4/4). With attention: 2–3 of 4–5 seeds. Engines below 80% barely improve; LSTM without
-attention at DS-A 60 has the lowest RMSE (17.9) but +3.0 engines below 80% vs 30 cycles.
+attention at DS-A 60 is nearly the most accurate (17.9 vs 17.4 for BiLSTM without attention) but has +3.0
+engines below 80% vs 30 cycles.
 
 **Sweep** (Part I model, matched on 90-cycle endpoints): RMSE IID 24.6, 23.1, 21.9, 20.9; DS-A 27.1, 24.3, 25.9, 23.1;
 DS-B 27.3, 26.4, 22.7, 22.7 at 30/45/60/90. DS-A engines below 80%: 12.2, 10.2, 9.6, 7.0 (90 − 30: −5.2 ± 2.2, 5/5).
