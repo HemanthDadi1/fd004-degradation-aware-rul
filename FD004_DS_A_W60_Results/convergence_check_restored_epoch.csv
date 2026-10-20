@@ -1,0 +1,8 @@
+# Keras EarlyStopping(start_from_epoch=30) ignores epochs 1-30, so the restored weights are the best from epoch 31 on.
+# convergence_check.csv used the minimum over all epochs; this file uses the restored epoch. Verdicts are unchanged.
+seed,epochs,min_epoch_all,min_ratio_all,restored_epoch,restored_val,restored_ratio,converged
+42,70,55,0.503,55,15.172,0.503,True
+123,71,56,0.528,56,15.912,0.528,True
+456,58,43,0.382,43,11.501,0.382,True
+789,57,42,0.326,42,9.826,0.326,True
+1000,74,59,0.395,59,11.896,0.395,True

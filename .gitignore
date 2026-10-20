@@ -1,0 +1,5 @@
+CMAPSSData/
+__pycache__/
+.ipynb_checkpoints/
+*_SMOKE/
+.DS_Store

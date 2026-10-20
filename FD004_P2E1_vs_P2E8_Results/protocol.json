@@ -1,0 +1,29 @@
+{
+  "experiment": "P2-E1 (30) vs P2-E8 (60) point LSTM, Paper 1 training rule, matched IID endpoints",
+  "created_utc": "2026-10-19T20:30:24Z",
+  "seeds": [
+    42,
+    123,
+    456,
+    789,
+    1000
+  ],
+  "windows": [
+    30,
+    60
+  ],
+  "model": "Dense(18, no bias) -> LSTM(64) -> Dense(1), MSE, Adam 1e-3, batch 64",
+  "internal_validation": "20% of 200 IID training engines, split seed 42",
+  "training_rule": {
+    "max_epochs": 150,
+    "patience": 15,
+    "start_from_epoch": 30
+  },
+  "convergence_check": "best val MSE <= 0.60 x MSE of training-mean predictor",
+  "evaluation": "49 IID validation engines, endpoints with cycle >= 60 (matched)",
+  "life_stage": {
+    "Early": "RUL > 80",
+    "Mid": "40 < RUL <= 80",
+    "Late": "RUL <= 40"
+  }
+}

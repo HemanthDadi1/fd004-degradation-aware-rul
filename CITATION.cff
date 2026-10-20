@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "If you use this code or these results, please cite the paper and this archive."
+title: "Engine-Level Reliability of Conformal RUL Uncertainty Under Operating-Condition Distribution Shift in C-MAPSS FD004 (Part II): code and results"
+authors:
+  - family-names: Dadi
+    given-names: Hemanth
+    affiliation: "[Institution]"
+version: "1.0.0"
+date-released: "2026-10-20"
+license: MIT
+keywords: [remaining useful life, C-MAPSS, temporal context, conformal prediction, distribution shift]
+references:
+  - type: software
+    title: "fd004-conformal-rul-reliability (Part I code and results)"
+    url: "https://github.com/HemanthDadi1/fd004-conformal-rul-reliability"
