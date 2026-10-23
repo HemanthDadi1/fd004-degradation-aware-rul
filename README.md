@@ -52,6 +52,7 @@ Details: `docs/Paper2_Results_Summary.md`. Why the original Paper 2 numbers were
 | `FD004_Paper2_Ensembles/`, `FD004_Paper2_EqualWidth/` | Five-seed ensembles and equal-width curves; `figures/p2_fig3_equal_width.png` |
 | `FD004_Paper2_Factorial_Sweep/` | Matched factorial and sweep tables, all seeds and collapsed seeds excluded (see README there) |
 | `scripts/ensembles.py`, `equal_width_30v60.py`, `matched_compare_fd002.py`, `p2fig3.py`, `matched_factorial_sweep.py` | Analyses behind the extension tables and Figure 3 |
+| `Supplementary_Data_S2.xlsx`, `scripts/build_s2.py` | Supplementary Data S2: convergence of all 120 Part II runs, FD002 splits, per-seed matched tables, ensembles, equal-width curves |
 | `scripts/make_gen_nb.py` | Generates notebooks 16–36 (condition, window, dataset, architecture) |
 | `colab/RUN_ON_COLAB.ipynb` | Runs notebooks on a Colab GPU, resumably (notebooks 24–36 ran this way) |
 | `artifacts/`, `FD004_DS_B_Results/`, `FD004_DS_A_Rerun_Results/`, `models/` | Inputs the notebooks check against |
