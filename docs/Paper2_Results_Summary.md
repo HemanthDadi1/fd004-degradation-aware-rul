@@ -52,7 +52,7 @@ full-test-set numbers.)
 
 | | 30 cycles | 60 cycles |
 |---|---|---|
-| IID | 36 | none (36, 49 in four seeds) |
+| IID (FD004 units; saved-file engine nos. 36, 37, 49 are units 184, 185, 247) | 184 | none (184 and 247 in four seeds) |
 | DS-A | 17, 105, 115, 156, 184, 240 | 17, 156, 240 |
 | DS-B | 17, 39, 156, 184, 240 | 17, 156, 184 |
 

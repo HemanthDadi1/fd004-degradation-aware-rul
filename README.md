@@ -84,6 +84,10 @@ python scripts/matched_compare_fd002.py . FD004_FD002_Matched_30v60
 python scripts/matched_factorial_sweep.py . FD004_Paper2_Factorial_Sweep
 ```
 
+## IID engine numbering
+
+The saved IID files (`engine`, `engine_index`) number engines by position, not by FD004 unit: fit and internal_val by position (1-200) among the sorted training units, calibration and evaluation by position (1-49) among the sorted validation units. `iid_engine_to_unit.csv` gives the FD004 unit of every engine. DS-A and DS-B files already use unit numbers. For example, IID engines 36, 37 and 49 are units 184, 185 and 247.
+
 ## Early stopping note
 
 The notebooks use Keras `EarlyStopping(start_from_epoch=30, restore_best_weights=True)`, which ignores epochs
